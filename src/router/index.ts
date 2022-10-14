@@ -3,9 +3,9 @@ import HomeView from "../views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
+    path: "/login",
+    name: "login",
+    component: () => import("@/components/LoginComponent.vue"),
   },
   {
     path: "/",

@@ -1,0 +1,80 @@
+<template>
+  <div class="LoginArea">
+    <div class="LoginBox border">
+      <div class="Cabecalho">
+        <p>Extrator de Sustentação do Redmine</p>
+      </div>
+      <form class="px-4 py-3 Editaveis">
+        <div class="form-group">
+          <label for="exampleDropdownFormEmail1">Usuário</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleDropdownFormUser"
+            placeholder="Digite o seu Usuário"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleDropdownFormPassword1">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleDropdownFormPassword1"
+            placeholder="Digite a sua Senha"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary Botao">Entrar</button>
+      </form>
+      <div class="dropdown-divider"></div>
+      <p>O Usuário e Senha são validados junto ao Redmine do Iphan</p>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "LoginComponent",
+  setup() {
+    console.log("teste");
+  },
+});
+</script>
+
+<style scoped>
+.LoginArea {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.LoginBox {
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.Editaveis {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.Botao {
+  margin: 20px 0px 0px 0px;
+}
+.form-group {
+  margin: 10px 0px 0px 0px;
+}
+.Cabecalho {
+  margin: 10px 0px 0px 0px;
+}
+</style>
