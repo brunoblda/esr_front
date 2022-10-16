@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid centralizar">
+    <div class="container-fluid">
       <router-link class="navbar-brand" to="/">Home</router-link>
       <button
         class="navbar-toggler"
@@ -22,13 +22,11 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/about"
-              >Configuracoes</router-link
+              >Configurações</router-link
             >
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <button class="btn btn-outline-danger" type="submit">Deslogar</button>
-        </form>
+        <button class="btn btn-danger" type="submit">Encerrar sessão</button>
       </div>
     </div>
   </nav>

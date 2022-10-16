@@ -4,10 +4,11 @@
       <div class="Cabecalho">
         <p>Extrator de Sustentação do Redmine</p>
       </div>
-      <form class="px-4 py-3 Editaveis">
+      <form @submit.prevent="click" class="px-4 py-3 Editaveis">
         <div class="form-group">
           <label for="exampleDropdownFormEmail1">Usuário</label>
           <input
+            v-model="usuario"
             type="text"
             class="form-control"
             id="exampleDropdownFormUser"
@@ -17,13 +18,16 @@
         <div class="form-group">
           <label for="exampleDropdownFormPassword1">Senha</label>
           <input
+            v-model="senha"
             type="password"
             class="form-control"
             id="exampleDropdownFormPassword1"
             placeholder="Digite a sua Senha"
           />
         </div>
-        <button type="submit" class="btn btn-primary Botao">Entrar</button>
+        <button @onclick="click()" type="submit" class="btn btn-primary Botao">
+          Entrar
+        </button>
       </form>
       <div class="dropdown-divider"></div>
       <p>O Usuário e Senha são validados junto ao Redmine do Iphan</p>
@@ -32,12 +36,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref, computed } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "LoginComponent",
   setup() {
-    console.log("teste");
+    const store = useStore();
+
+    const usuario = ref("");
+    const senha = ref("");
+
+    const click = () => {
+      store.dispatch("login/authLogin", {
+        user: usuario.value,
+        password: senha.value,
+      });
+    };
+    return {
+      click,
+      usuario,
+      senha,
+    };
   },
 });
 </script>
