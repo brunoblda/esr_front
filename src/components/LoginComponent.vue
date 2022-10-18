@@ -3,6 +3,7 @@
     <div class="LoginBox border">
       <div class="Cabecalho">
         <p>Extrator de Sustentação do Redmine</p>
+        <p>{{ logado }}</p>
       </div>
       <form @submit.prevent="click" class="px-4 py-3 Editaveis">
         <div class="form-group">
@@ -47,6 +48,8 @@ export default defineComponent({
     const usuario = ref("");
     const senha = ref("");
 
+    console.log(store.getters["login/getLogged"]);
+
     const click = () => {
       store.dispatch("login/authLogin", {
         user: usuario.value,
@@ -57,6 +60,7 @@ export default defineComponent({
       click,
       usuario,
       senha,
+      logado: computed(() => store.state.login.logged),
     };
   },
 });
