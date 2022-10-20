@@ -2,8 +2,7 @@
   <div class="LoginArea">
     <div class="LoginBox border">
       <div class="Cabecalho">
-        <p>Extrator de Sustentação do Redmine</p>
-        <p>{{ logado }}</p>
+        <h3>Extrator de Sustentação do Redmine</h3>
       </div>
       <form @submit.prevent="click" class="px-4 py-3 Editaveis">
         <div class="form-group">
@@ -37,8 +36,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, watch, reactive } from "vue";
 import { useStore } from "vuex";
+import { useSessionStorage, useStorage } from "@vueuse/core";
 
 export default defineComponent({
   name: "LoginComponent",
@@ -47,8 +47,6 @@ export default defineComponent({
 
     const usuario = ref("");
     const senha = ref("");
-
-    console.log(store.getters["login/getLogged"]);
 
     const click = () => {
       store.dispatch("login/authLogin", {

@@ -19,15 +19,21 @@ export const login = {
     },
   },
   mutations: {
-    updateLogged(state: any, { response, user, password }) {
+    updateLogged(state: any, { response, user, password, getUsuario }) {
       if (response["redmine_status_response"] === 200) {
         state.logged = true;
         state.usuario = user;
         state.senha = password;
+
+        sessionStorage.setItem("usuario", `${state.usuario}`);
+        sessionStorage.setItem("senha", `${state.senha}`);
       } else {
         state.logged = false;
         state.usuario = "";
         state.senha = "";
+
+        sessionStorage.removeItem("usuario");
+        sessionStorage.removeItem("senha");
       }
     },
   },
