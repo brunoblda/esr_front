@@ -7,11 +7,17 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "login",
     component: () => import("@/components/LoginComponent.vue"),
+    meta: {
+      hideForAuth: true,
+    },
   },
   {
     path: "/",
     name: "home",
     component: HomeComponent,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/about",
@@ -21,12 +27,39 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    meta: {
+      requiresAuth: true,
+    },
   },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  let auth = false;
+
+  if (sessionStorage.getItem("token")) {
+    auth = true;
+  }
+
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (auth == false) {
+      next({ path: "/login" });
+    } else {
+      next();
+    }
+  }
+
+  if (to.matched.some((record) => record.meta.hideForAuth)) {
+    if (auth == true) {
+      next({ path: "/" });
+    } else {
+      next();
+    }
+  }
 });
 
 export default router;

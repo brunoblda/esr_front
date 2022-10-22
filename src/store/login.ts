@@ -3,38 +3,29 @@ export const login = {
   state() {
     return {
       logged: false,
-      usuario: "",
-      senha: "",
     };
   },
   getters: {
     getLogged(state: any) {
       return state.logged;
     },
-    getUsuario(state: any) {
-      return state.usuario;
-    },
-    getSenha(state: any) {
-      return state.senha;
-    },
   },
   mutations: {
-    updateLogged(state: any, { response, user, password, getUsuario }) {
-      if (response["redmine_status_response"] === 200) {
+    updateLogged(state: any, response: any) {
+      if (response[0]["redmine_status_response"] === 200) {
         state.logged = true;
-        state.usuario = user;
-        state.senha = password;
 
-        sessionStorage.setItem("usuario", `${state.usuario}`);
-        sessionStorage.setItem("senha", `${state.senha}`);
+        sessionStorage.setItem("token", response[1]);
       } else {
         state.logged = false;
-        state.usuario = "";
-        state.senha = "";
 
-        sessionStorage.removeItem("usuario");
-        sessionStorage.removeItem("senha");
+        sessionStorage.removeItem("token");
       }
+    },
+    logout(state: any) {
+      state.logged = false;
+
+      sessionStorage.removeItem("token");
     },
   },
   actions: {
@@ -46,7 +37,7 @@ export const login = {
       };
       const res = await fetch("http://127.0.0.1:8000/login/", requestOptions);
       const response = await res.json();
-      ctx.commit("updateLogged", { response, user, password });
+      ctx.commit("updateLogged", response);
     },
   },
 };

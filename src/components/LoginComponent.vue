@@ -4,7 +4,8 @@
       <div class="Cabecalho">
         <h3>Extrator de Sustentação do Redmine</h3>
       </div>
-      <form @submit.prevent="click" class="px-4 py-3 Editaveis">
+      <form class="px-4 py-3 Editaveis">
+        <!--@submit.prevent="click"-->
         <div class="form-group">
           <label for="exampleDropdownFormEmail1">Usuário</label>
           <input
@@ -25,9 +26,18 @@
             placeholder="Digite a sua Senha"
           />
         </div>
-        <button @onclick="click()" type="submit" class="btn btn-primary Botao">
-          Entrar
-        </button>
+        <router-link to="/" custom v-slot="{ navigate }">
+          <button
+            @click="
+              click();
+              navigate();
+            "
+            type="button"
+            class="btn btn-primary Botao"
+          >
+            Entrar
+          </button>
+        </router-link>
       </form>
       <div class="dropdown-divider"></div>
       <p>O Usuário e Senha são validados junto ao Redmine do Iphan</p>
@@ -36,9 +46,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, reactive } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import { useStore } from "vuex";
-import { useSessionStorage, useStorage } from "@vueuse/core";
 
 export default defineComponent({
   name: "LoginComponent",
