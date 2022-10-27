@@ -46,7 +46,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import router from "@/router";
+import { defineComponent, ref, computed, watch } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
@@ -56,6 +57,13 @@ export default defineComponent({
 
     const usuario = ref("");
     const senha = ref("");
+    const logado = computed(() => store.state.login.logged);
+
+    watch(logado, (newVal, oldVal) => {
+      if (Boolean(newVal) == true) {
+        router.push("/");
+      }
+    });
 
     const click = () => {
       store.dispatch("login/authLogin", {
@@ -67,7 +75,7 @@ export default defineComponent({
       click,
       usuario,
       senha,
-      logado: computed(() => store.state.login.logged),
+      logado,
     };
   },
 });
