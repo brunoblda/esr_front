@@ -3,6 +3,7 @@ export const login = {
   state() {
     return {
       logged: false,
+      count_false_tries: 0,
     };
   },
   getters: {
@@ -14,10 +15,12 @@ export const login = {
     updateLogged(state: any, response: any) {
       if (response[0]["redmine_status_response"] === 200) {
         state.logged = true;
+        state.count_false_tries = 0;
 
         sessionStorage.setItem("token", response[1]);
       } else {
         state.logged = false;
+        state.count_false_tries++;
 
         sessionStorage.removeItem("token");
       }
@@ -25,7 +28,7 @@ export const login = {
     logout(state: any) {
       state.logged = false;
 
-      sessionStorage.removeItem("token");
+      sessionStorage.clear();
     },
   },
   actions: {

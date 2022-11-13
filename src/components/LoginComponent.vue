@@ -1,6 +1,6 @@
 <template>
   <div class="LoginArea">
-    <div class="LoginBox border">
+    <div class="LoginBox border border-success">
       <div class="Cabecalho">
         <h3>Extrator de Sustentação do Redmine</h3>
       </div>
@@ -40,14 +40,21 @@
         </router-link>
       </form>
       <div class="dropdown-divider"></div>
-      <p>O Usuário e Senha são validados junto ao Redmine do Iphan</p>
+      <div class="loginError" v-show="esconder" id="hide">
+        <p>- Usuário e/ou senha Incorretos; ou</p>
+        <p>- Você não tem permissão de Administrador no Redmine do Iphan; ou</p>
+        <p>- O sistema de validação do LDAP (SISCAU) esta fora do ar.</p>
+      </div>
+      <div v-show="!esconder" id="hide">
+        <p>O Usuário e Senha são validados junto ao Redmine do Iphan</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import router from "@/router";
-import { defineComponent, ref, computed, watch } from "vue";
+import { defineComponent, ref, computed, watch, watchEffect } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
@@ -55,13 +62,25 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
+    const esconder = ref(false);
     const usuario = ref("");
     const senha = ref("");
     const logado = computed(() => store.state.login.logged);
+    const count_false_tries = computed(() => {
+      return store.state.login.count_false_tries;
+    });
 
     watch(logado, (newVal, oldVal) => {
       if (Boolean(newVal) == true) {
         router.push("/");
+      }
+    });
+
+    watchEffect(() => {
+      if (count_false_tries.value > 0) {
+        esconder.value = true;
+      } else {
+        esconder.value = false;
       }
     });
 
@@ -76,12 +95,17 @@ export default defineComponent({
       usuario,
       senha,
       logado,
+      esconder,
+      count_false_tries,
     };
   },
 });
 </script>
 
 <style scoped>
+.loginError {
+  color: red;
+}
 .LoginArea {
   width: 100vw;
   height: 100vh;
@@ -91,8 +115,8 @@ export default defineComponent({
   align-items: center;
 }
 .LoginBox {
-  width: 500px;
-  height: 400px;
+  width: 550px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;

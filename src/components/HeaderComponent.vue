@@ -24,10 +24,41 @@
               Extrair Sustentação Mensal
             </router-link>
           </li>
-          <li class="nav-item px-3">
+          <li class="nav-item px-3 dropdown">
+            <a
+              class="nav-link text-dark fs-3 dropdown-toggle"
+              role="button"
+              aria-haspopup="true"
+              data-bs-toggle="dropdown"
+            >
+              Configurações
+            </a>
+            <ul class="dropdown-menu ms-3">
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  to="/configuracoes/usuariosFabrica"
+                >
+                  Usuários da Fábrica</router-link
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Feriados e Datas</a>
+              </li>
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  to="/configuracoes/paginasAPercorrer"
+                >
+                  Paginas a Percorrer</router-link
+                >
+              </li>
+            </ul>
+            <!-- 
             <router-link class="nav-link text-dark fs-3" to="/about"
               >Configurações</router-link
             >
+            -->
           </li>
         </ul>
         <router-link to="/login" custom v-slot="{ navigate }">

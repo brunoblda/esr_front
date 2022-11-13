@@ -1,5 +1,7 @@
 import { createStore } from "vuex";
 import { login } from "./login";
+import { configUsuariosFabrica } from "./configUsuariosFabrica";
+import { configPaginasPercorrer } from "./configPaginasPercorrer";
 
 export default createStore({
   state: {},
@@ -8,5 +10,7 @@ export default createStore({
   actions: {},
   modules: {
     login,
+    configUsuariosFabrica,
+    configPaginasPercorrer,
   },
 });
