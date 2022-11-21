@@ -1,25 +1,19 @@
-import { login } from "./login";
-
-export const configUsuariosFabrica = {
+export const configFeriadosEDatas = {
   namespaced: true,
   state() {
     return {
-      allUsuariosFabrica: [],
-      allUsuarios: [],
+      allFeriadosEDatas: [],
     };
   },
   getters: {
-    getAllUsuariosFabrica(state: any) {
-      return state.allUsuariosFabrica;
-    },
-    getAllUsuarios(state: any) {
-      return state.allUsuarios;
+    getAllFeriadosEDatas(state: any) {
+      return state.allFeriadosEDatas;
     },
   },
   mutations: {
-    updateUsuariosFabricaAll(state: any, response: any) {
+    updateAllFeriadosEDatas(state: any, response: any) {
       if (response[0]["redmine_status_response"] === 200) {
-        state.allUsuariosFabrica = response[1];
+        state.allFeriadosEDatas = response[1];
       }
       if (
         response[0]["Problema de autenticação, faça o login novamente"] === 401
@@ -29,19 +23,7 @@ export const configUsuariosFabrica = {
         window.location.reload();
       }
     },
-    updateUsuariosAll(state: any, response: any) {
-      if (response[0]["redmine_status_response"] === 200) {
-        state.allUsuarios = response[1];
-      }
-      if (
-        response[0]["Problema de autenticação, faça o login novamente"] === 401
-      ) {
-        sessionStorage.clear();
-        state.logged = false;
-        window.location.reload();
-      }
-    },
-    responseAddUsuario(state: any, response: any) {
+    responseAddFeriadoOuData(state: any, response: any) {
       if (response[0]["redmine_status_response"] === 201) {
         //pass
       }
@@ -53,7 +35,7 @@ export const configUsuariosFabrica = {
         window.location.reload();
       }
     },
-    responseDelUsuario(state: any, response: any) {
+    responseDelFeriadoOuData(state: any, response: any) {
       if (response[0]["redmine_status_response"] === 200) {
         //pass
       }
@@ -67,32 +49,19 @@ export const configUsuariosFabrica = {
     },
   },
   actions: {
-    async getAllUsuariosFabrica(ctx: any) {
+    async getAllFeriadosEDatas(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
-      ctx.commit("updateUsuariosFabricaAll", response);
+      ctx.commit("updateAllFeriadosEDatas", response);
     },
-    async getAllUsuarios(ctx: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        headers: { token: String(token_saved) },
-      };
-      const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/allRedmineUsers/",
-        requestOptions
-      );
-      const response = await res.json();
-
-      ctx.commit("updateUsuariosAll", response);
-    },
-    async addUsuario(ctx: any, [user]) {
+    async addFeriadoOuData(ctx: any, [dia_r, periodo_r]) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         method: "POST",
@@ -100,18 +69,18 @@ export const configUsuariosFabrica = {
           token: String(token_saved),
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ id: user[0], login: user[1] }),
+        body: JSON.stringify({ dia: dia_r, periodo: periodo_r }),
       };
 
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
 
-      ctx.commit("responseAddUsuario", response);
+      ctx.commit("responseAddFeriadoOuData", response);
     },
-    async delUsuario(ctx: any, [user]) {
+    async delFeriadoOuData(ctx: any, [data]) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         method: "DELETE",
@@ -119,12 +88,12 @@ export const configUsuariosFabrica = {
       };
 
       const res = await fetch(
-        `http://127.0.0.1:8000/configuracoes/usuariosFabrica/${user[0]}`,
+        `http://127.0.0.1:8000/configuracoes/feriadosEDatas/${data}`,
         requestOptions
       );
       const response = await res.json();
 
-      ctx.commit("responseDelUsuario", response);
+      ctx.commit("responseDelFeriadoOuData", response);
     },
   },
 };

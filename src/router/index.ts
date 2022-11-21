@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/configuracoes/usuariosFabrica",
-    name: "UsuariosFabrica",
+    name: "usuariosFabrica",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -31,11 +31,24 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/configuracoes/paginasAPercorrer",
-    name: "PaginasAPercorrer",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    name: "paginasAPercorrer",
     component: () => import("@/components/PaginasAPercorrerComponent.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/configuracoes/feriadosEDatas",
+    name: "feriadosEDatas",
+    component: () => import("@/components/FeriadosEDatasComponent.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/extratorSustentacaoMensal",
+    name: "extratorSustentacaoMensal",
+    component: () => import("@/components/ExtratorComponent.vue"),
     meta: {
       requiresAuth: true,
     },

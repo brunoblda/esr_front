@@ -12,19 +12,30 @@ export const configPaginasPercorrer = {
   },
   mutations: {
     updateValorAtual(state: any, response: any) {
-      console.log(response);
       if (response[0]["redmine_status_response"] === 200) {
         state.valorAtual = response[1][0]["percorre_quantas_paginas"];
-      } else {
-        console.log("failed");
+      }
+      if (
+        response[0]["Problema de autenticação, faça o login novamente"] === 401
+      ) {
+        sessionStorage.clear();
+        state.logged = false;
+        window.location.reload();
       }
     },
     responseUpdatePaginasAPercorrer(state: any, response: any) {
-      console.log(response);
-      if (response[0]["redmine_status_response"] === 200) {
-        console.log("sucess");
-      } else {
-        console.log("failed");
+      if (
+        response[0]["redmine_status_response"] === 200 ||
+        response[0]["redmine_status_response"] === 201
+      ) {
+        //pass
+      }
+      if (
+        response[0]["Problema de autenticação, faça o login novamente"] === 401
+      ) {
+        sessionStorage.clear();
+        state.logged = false;
+        window.location.reload();
       }
     },
   },
@@ -35,15 +46,13 @@ export const configPaginasPercorrer = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/paginasDeDados/",
+        "http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();
       ctx.commit("updateValorAtual", response);
     },
     async updatePaginasAPercorrer(ctx: any, paginas: any) {
-      console.log("13");
-      console.log(paginas);
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         method: "PUT",
@@ -55,7 +64,7 @@ export const configPaginasPercorrer = {
       };
 
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/paginasDeDados/",
+        "http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();

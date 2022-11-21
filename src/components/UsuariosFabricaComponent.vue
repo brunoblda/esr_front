@@ -4,7 +4,7 @@
     <div class="usuariosFabricaLista">
       <h2>Lista de usuários da fábrica</h2>
       <div class="mt-3">
-        <ul class="list-group">
+        <ul class="list-group list-sized-param">
           <li
             class="list-group-item"
             v-for="usuario in allUsuariosFabrica"
@@ -119,27 +119,23 @@ export default defineComponent({
     });
 
     const clickAdicionar = async () => {
-      console.log(Array.isArray(adicionarUsuario.value));
-      console.log(adicionarUsuario.value);
-
       if (Array.isArray(adicionarUsuario.value)) {
         await store.dispatch("configUsuariosFabrica/addUsuario", [
           adicionarUsuario.value,
         ]);
 
+        adicionarUsuario.value = "Digite o usuário";
         store.dispatch("configUsuariosFabrica/getAllUsuariosFabrica");
       }
     };
 
     const clickRetirar = async () => {
-      console.log("12");
-      console.log(retirarUsuario.value);
-
       if (Array.isArray(retirarUsuario.value)) {
         await store.dispatch("configUsuariosFabrica/delUsuario", [
           retirarUsuario.value,
         ]);
 
+        retirarUsuario.value = "Digite o usuário";
         store.dispatch("configUsuariosFabrica/getAllUsuariosFabrica");
       }
     };
@@ -156,4 +152,10 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.list-sized-param {
+  height: auto;
+  max-height: 353px;
+  overflow-x: hidden;
+}
+</style>

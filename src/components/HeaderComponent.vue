@@ -19,7 +19,7 @@
             <router-link
               class="nav-link text-primary fs-3"
               aria-current="page"
-              to="/"
+              to="/extratorSustentacaoMensal"
             >
               Extrair Sustentação Mensal
             </router-link>
@@ -43,7 +43,12 @@
                 >
               </li>
               <li>
-                <a class="dropdown-item" href="#">Feriados e Datas</a>
+                <router-link
+                  class="dropdown-item"
+                  to="/configuracoes/feriadosEDatas"
+                >
+                  Feriados e Datas</router-link
+                >
               </li>
               <li>
                 <router-link

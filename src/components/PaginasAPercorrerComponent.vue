@@ -74,12 +74,12 @@ export default defineComponent({
     let valorInput = ref();
 
     const clickAlterar = async () => {
-      console.log(valorInput.value);
-
-      await store.dispatch(
-        "configPaginasPercorrer/updatePaginasAPercorrer",
-        valorInput.value
-      );
+      if (parseInt(valorInput.value) > 0) {
+        await store.dispatch(
+          "configPaginasPercorrer/updatePaginasAPercorrer",
+          valorInput.value
+        );
+      }
 
       store.dispatch("configPaginasPercorrer/getPaginasAPercorrer");
     };

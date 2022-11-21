@@ -1,22 +1,36 @@
 import { login } from "./login";
 
-export const configUsuariosFabrica = {
+export const extrator = {
   namespaced: true,
   state() {
     return {
+      resultCSV: [],
       allUsuariosFabrica: [],
-      allUsuarios: [],
+      allFeriadosEDatas: [],
+      valorAtual: "",
     };
   },
   getters: {
+    getResultCSV(state: any) {
+      return state.resultCSV;
+    },
     getAllUsuariosFabrica(state: any) {
       return state.allUsuariosFabrica;
     },
-    getAllUsuarios(state: any) {
-      return state.allUsuarios;
-    },
   },
   mutations: {
+    updateAllFeriadosEDatas(state: any, response: any) {
+      if (response[0]["redmine_status_response"] === 200) {
+        state.allFeriadosEDatas = response[1];
+      }
+      if (
+        response[0]["Problema de autenticação, faça o login novamente"] === 401
+      ) {
+        sessionStorage.clear();
+        state.logged = false;
+        window.location.reload();
+      }
+    },
     updateUsuariosFabricaAll(state: any, response: any) {
       if (response[0]["redmine_status_response"] === 200) {
         state.allUsuariosFabrica = response[1];
@@ -29,9 +43,9 @@ export const configUsuariosFabrica = {
         window.location.reload();
       }
     },
-    updateUsuariosAll(state: any, response: any) {
+    updateValorAtual(state: any, response: any) {
       if (response[0]["redmine_status_response"] === 200) {
-        state.allUsuarios = response[1];
+        state.valorAtual = response[1][0]["percorre_quantas_paginas"];
       }
       if (
         response[0]["Problema de autenticação, faça o login novamente"] === 401
@@ -41,21 +55,9 @@ export const configUsuariosFabrica = {
         window.location.reload();
       }
     },
-    responseAddUsuario(state: any, response: any) {
-      if (response[0]["redmine_status_response"] === 201) {
-        //pass
-      }
-      if (
-        response[0]["Problema de autenticação, faça o login novamente"] === 401
-      ) {
-        sessionStorage.clear();
-        state.logged = false;
-        window.location.reload();
-      }
-    },
-    responseDelUsuario(state: any, response: any) {
-      if (response[0]["redmine_status_response"] === 200) {
-        //pass
+    updateResultToCSV(state: any, response: any) {
+      if (response[0]["Sla_month_extractor_executer"] === 200) {
+        state.resultCSV = response[1];
       }
       if (
         response[0]["Problema de autenticação, faça o login novamente"] === 401
@@ -67,6 +69,18 @@ export const configUsuariosFabrica = {
     },
   },
   actions: {
+    async getAllFeriadosEDatas(ctx: any) {
+      const token_saved = sessionStorage.getItem("token");
+      const requestOptions = {
+        headers: { token: String(token_saved) },
+      };
+      const res = await fetch(
+        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
+        requestOptions
+      );
+      const response = await res.json();
+      ctx.commit("updateAllFeriadosEDatas", response);
+    },
     async getAllUsuariosFabrica(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
@@ -79,20 +93,19 @@ export const configUsuariosFabrica = {
       const response = await res.json();
       ctx.commit("updateUsuariosFabricaAll", response);
     },
-    async getAllUsuarios(ctx: any) {
+    async getPaginasAPercorrer(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/allRedmineUsers/",
+        "http://127.0.0.1:8000/configuracoes/paginasDeDados/",
         requestOptions
       );
       const response = await res.json();
-
-      ctx.commit("updateUsuariosAll", response);
+      ctx.commit("updateValorAtual", response);
     },
-    async addUsuario(ctx: any, [user]) {
+    async postExtract(ctx: any, { mes_p, ano_p }) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         method: "POST",
@@ -100,31 +113,14 @@ export const configUsuariosFabrica = {
           token: String(token_saved),
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ id: user[0], login: user[1] }),
+        body: JSON.stringify({ mes: mes_p, ano: ano_p }),
       };
-
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "http://127.0.0.1:8000/extratorSlaMensal/",
         requestOptions
       );
       const response = await res.json();
-
-      ctx.commit("responseAddUsuario", response);
-    },
-    async delUsuario(ctx: any, [user]) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "DELETE",
-        headers: { token: String(token_saved) },
-      };
-
-      const res = await fetch(
-        `http://127.0.0.1:8000/configuracoes/usuariosFabrica/${user[0]}`,
-        requestOptions
-      );
-      const response = await res.json();
-
-      ctx.commit("responseDelUsuario", response);
+      ctx.commit("updateResultToCSV", response);
     },
   },
 };
