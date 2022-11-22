@@ -55,7 +55,7 @@ export const configFeriadosEDatas = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
+        "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -73,7 +73,7 @@ export const configFeriadosEDatas = {
       };
 
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
+        "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -88,7 +88,7 @@ export const configFeriadosEDatas = {
       };
 
       const res = await fetch(
-        `http://127.0.0.1:8000/configuracoes/feriadosEDatas/${data}`,
+        `https://lih9ob.deta.dev/configuracoes/feriadosEDatas/${data}`,
         requestOptions
       );
       const response = await res.json();

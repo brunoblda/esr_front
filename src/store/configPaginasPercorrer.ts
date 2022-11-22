@@ -46,7 +46,7 @@ export const configPaginasPercorrer = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
+        "https://lih9ob.deta.dev/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();
@@ -64,7 +64,7 @@ export const configPaginasPercorrer = {
       };
 
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
+        "https://lih9ob.deta.dev//configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();

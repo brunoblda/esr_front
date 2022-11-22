@@ -73,7 +73,7 @@ export const configUsuariosFabrica = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -85,7 +85,7 @@ export const configUsuariosFabrica = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/allRedmineUsers/",
+        "https://lih9ob.deta.dev/configuracoes/allRedmineUsers/",
         requestOptions
       );
       const response = await res.json();
@@ -104,7 +104,7 @@ export const configUsuariosFabrica = {
       };
 
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -119,7 +119,7 @@ export const configUsuariosFabrica = {
       };
 
       const res = await fetch(
-        `http://127.0.0.1:8000/configuracoes/usuariosFabrica/${user[0]}`,
+        `https://lih9ob.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
         requestOptions
       );
       const response = await res.json();

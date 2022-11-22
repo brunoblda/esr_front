@@ -75,7 +75,7 @@ export const extrator = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
+        "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -87,7 +87,7 @@ export const extrator = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -99,7 +99,7 @@ export const extrator = {
         headers: { token: String(token_saved) },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/paginasDeDados/",
+        "https://lih9ob.deta.dev/configuracoes/paginasDeDados/",
         requestOptions
       );
       const response = await res.json();
@@ -116,7 +116,7 @@ export const extrator = {
         body: JSON.stringify({ mes: mes_p, ano: ano_p }),
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/extratorSlaMensal/",
+        "https://lih9ob.deta.dev/extratorSlaMensal/",
         requestOptions
       );
       const response = await res.json();
