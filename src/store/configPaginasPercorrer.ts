@@ -43,7 +43,10 @@ export const configPaginasPercorrer = {
     async getPaginasAPercorrer(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
       const res = await fetch(
         "https://lih9ob.deta.dev/configuracoes/paginasDeDados/perfil/",

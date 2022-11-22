@@ -72,7 +72,10 @@ export const extrator = {
     async getAllFeriadosEDatas(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
       const res = await fetch(
         "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
@@ -84,7 +87,10 @@ export const extrator = {
     async getAllUsuariosFabrica(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
       const res = await fetch(
         "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
@@ -96,7 +102,10 @@ export const extrator = {
     async getPaginasAPercorrer(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
       const res = await fetch(
         "https://lih9ob.deta.dev/configuracoes/paginasDeDados/",

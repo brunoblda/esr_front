@@ -70,10 +70,13 @@ export const configUsuariosFabrica = {
     async getAllUsuariosFabrica(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
+        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -82,7 +85,10 @@ export const configUsuariosFabrica = {
     async getAllUsuarios(ctx: any) {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
       const res = await fetch(
         "https://lih9ob.deta.dev/configuracoes/allRedmineUsers/",
@@ -115,7 +121,10 @@ export const configUsuariosFabrica = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         method: "DELETE",
-        headers: { token: String(token_saved) },
+        headers: {
+          token: String(token_saved),
+          "Content-type": "application/json",
+        },
       };
 
       const res = await fetch(
