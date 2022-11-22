@@ -76,7 +76,7 @@ export const configUsuariosFabrica = {
         },
       };
       const res = await fetch(
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
