@@ -71,7 +71,7 @@ export const configUsuariosFabrica = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: JSON.stringify(token_saved),
+          token: String(token_saved),
           "Content-type": "application/json",
         },
       };
