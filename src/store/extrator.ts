@@ -78,7 +78,7 @@ export const extrator = {
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
+        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -93,7 +93,7 @@ export const extrator = {
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
+        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -108,7 +108,7 @@ export const extrator = {
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/paginasDeDados/",
+        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
         requestOptions
       );
       const response = await res.json();
@@ -125,7 +125,7 @@ export const extrator = {
         body: JSON.stringify({ mes: mes_p, ano: ano_p }),
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/extratorSlaMensal/",
+        "https://8ahe0l.deta.dev/extratorSlaMensal/",
         requestOptions
       );
       const response = await res.json();

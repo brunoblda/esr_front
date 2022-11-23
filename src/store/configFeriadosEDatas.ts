@@ -58,7 +58,7 @@ export const configFeriadosEDatas = {
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
+        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -76,7 +76,7 @@ export const configFeriadosEDatas = {
       };
 
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/feriadosEDatas/",
+        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -94,7 +94,7 @@ export const configFeriadosEDatas = {
       };
 
       const res = await fetch(
-        `https://lih9ob.deta.dev/configuracoes/feriadosEDatas/${data}`,
+        `https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/${data}`,
         requestOptions
       );
       const response = await res.json();

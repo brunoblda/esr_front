@@ -38,7 +38,7 @@ export const login = {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ usuario: user, senha: password }),
       };
-      const res = await fetch("https://lih9ob.deta.dev/login/", requestOptions);
+      const res = await fetch("https://8ahe0l.deta.dev/login/", requestOptions);
       const response = await res.json();
       ctx.commit("updateLogged", response);
     },

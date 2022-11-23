@@ -49,7 +49,7 @@ export const configPaginasPercorrer = {
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/paginasDeDados/perfil/",
+        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();
@@ -67,7 +67,7 @@ export const configPaginasPercorrer = {
       };
 
       const res = await fetch(
-        "https://lih9ob.deta.dev//configuracoes/paginasDeDados/perfil/",
+        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();

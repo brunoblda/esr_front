@@ -71,12 +71,12 @@ export const configUsuariosFabrica = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          token: JSON.stringify(token_saved),
           "Content-type": "application/json",
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
+        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -91,7 +91,7 @@ export const configUsuariosFabrica = {
         },
       };
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/allRedmineUsers/",
+        "https://8ahe0l.deta.dev/configuracoes/allRedmineUsers/",
         requestOptions
       );
       const response = await res.json();
@@ -110,7 +110,7 @@ export const configUsuariosFabrica = {
       };
 
       const res = await fetch(
-        "https://lih9ob.deta.dev/configuracoes/usuariosFabrica/",
+        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -128,7 +128,7 @@ export const configUsuariosFabrica = {
       };
 
       const res = await fetch(
-        `https://lih9ob.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
+        `https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
         requestOptions
       );
       const response = await res.json();
