@@ -59,6 +59,7 @@ export const configFeriadosEDatas = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -77,6 +78,7 @@ export const configFeriadosEDatas = {
 
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -95,6 +97,7 @@ export const configFeriadosEDatas = {
 
       const res = await fetch(
         `https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/${data}`,
+        //`http://127.0.0.1:8000/configuracoes/feriadosEDatas/${data}`,
         requestOptions
       );
       const response = await res.json();

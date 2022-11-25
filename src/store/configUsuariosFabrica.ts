@@ -1,5 +1,3 @@
-import { login } from "./login";
-
 export const configUsuariosFabrica = {
   namespaced: true,
   state() {
@@ -77,6 +75,7 @@ export const configUsuariosFabrica = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -92,10 +91,10 @@ export const configUsuariosFabrica = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/allRedmineUsers/",
+        //"http://127.0.0.1:8000/configuracoes/allRedmineUsers/",
         requestOptions
       );
       const response = await res.json();
-
       ctx.commit("updateUsuariosAll", response);
     },
     async addUsuario(ctx: any, [user]) {
@@ -111,6 +110,7 @@ export const configUsuariosFabrica = {
 
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -129,6 +129,7 @@ export const configUsuariosFabrica = {
 
       const res = await fetch(
         `https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
+        //`http://127.0.0.1:8000/configuracoes/usuariosFabrica/${user[0]}`,
         requestOptions
       );
       const response = await res.json();

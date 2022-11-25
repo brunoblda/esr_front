@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeComponent from "@/components/HomeComponent.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/login",
     name: "login",
     component: () => import("@/components/LoginComponent.vue"),
+    //component: LoginComponent,
     meta: {
       hideForAuth: true,
     },
@@ -13,7 +13,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeComponent,
+    component: () => import("@/components/HomeComponent.vue"),
+    //component: HomeComponent,
     meta: {
       requiresAuth: true,
     },
@@ -25,6 +26,7 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import("@/components/UsuariosFabricaComponent.vue"),
+    //component: UsuariosFabricaComponent,
     meta: {
       requiresAuth: true,
     },
@@ -33,6 +35,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/configuracoes/paginasAPercorrer",
     name: "paginasAPercorrer",
     component: () => import("@/components/PaginasAPercorrerComponent.vue"),
+    //component: PaginasAPercorrerComponent,
     meta: {
       requiresAuth: true,
     },
@@ -41,6 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/configuracoes/feriadosEDatas",
     name: "feriadosEDatas",
     component: () => import("@/components/FeriadosEDatasComponent.vue"),
+    //component: FeriadosEDatasComponent,
     meta: {
       requiresAuth: true,
     },
@@ -49,6 +53,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/extratorSustentacaoMensal",
     name: "extratorSustentacaoMensal",
     component: () => import("@/components/ExtratorComponent.vue"),
+    //component: ExtratorComponent,
     meta: {
       requiresAuth: true,
     },
@@ -57,7 +62,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes: routes,
 });
 
 router.beforeEach((to, from, next) => {

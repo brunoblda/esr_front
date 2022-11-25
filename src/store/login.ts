@@ -39,6 +39,7 @@ export const login = {
         body: JSON.stringify({ usuario: user, senha: password }),
       };
       const res = await fetch("https://8ahe0l.deta.dev/login/", requestOptions);
+      //const res = await fetch("http://127.0.0.1:8000/login/", requestOptions);
       const response = await res.json();
       ctx.commit("updateLogged", response);
     },

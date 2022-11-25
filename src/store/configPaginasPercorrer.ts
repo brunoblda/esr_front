@@ -50,6 +50,7 @@ export const configPaginasPercorrer = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
+        //"http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();
@@ -68,6 +69,7 @@ export const configPaginasPercorrer = {
 
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
+        //"http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
         requestOptions
       );
       const response = await res.json();

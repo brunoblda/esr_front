@@ -1,5 +1,3 @@
-import { login } from "./login";
-
 export const extrator = {
   namespaced: true,
   state() {
@@ -79,6 +77,7 @@ export const extrator = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -94,6 +93,7 @@ export const extrator = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -109,6 +109,7 @@ export const extrator = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
+        //"http://127.0.0.1:8000/configuracoes/paginasDeDados/",
         requestOptions
       );
       const response = await res.json();
@@ -126,6 +127,7 @@ export const extrator = {
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/extratorSlaMensal/",
+        //"http://127.0.0.1:8000/extratorSlaMensal/",
         requestOptions
       );
       const response = await res.json();
