@@ -34,6 +34,7 @@
             "
             type="button"
             class="btn btn-primary Botao"
+            :disabled="isDisabled"
           >
             Entrar
           </button>
@@ -62,6 +63,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
 
+    const isDisabled = ref(false);
     const esconder = ref(false);
     const usuario = ref("");
     const senha = ref("");
@@ -72,6 +74,7 @@ export default defineComponent({
 
     watch(logado, (newVal, oldVal) => {
       if (Boolean(newVal) == true) {
+        isDisabled.value = false;
         router.push("/");
       }
     });
@@ -79,12 +82,15 @@ export default defineComponent({
     watchEffect(() => {
       if (count_false_tries.value > 0) {
         esconder.value = true;
+        isDisabled.value = false;
       } else {
         esconder.value = false;
+        isDisabled.value = false;
       }
     });
 
     const click = () => {
+      isDisabled.value = true;
       store.dispatch("login/authLogin", {
         user: usuario.value,
         password: senha.value,
@@ -97,6 +103,7 @@ export default defineComponent({
       logado,
       esconder,
       count_false_tries,
+      isDisabled,
     };
   },
 });

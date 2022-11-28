@@ -120,8 +120,6 @@ export const extrator = {
       let response_full = [];
       let offset_p = "0";
       let response_firt;
-      console.log("123");
-      console.log(valorAtual_p);
       for (let i = 0; i < parseInt(valorAtual_p); i++) {
         offset_p = (50 * i).toString();
         const requestOptions = {
@@ -138,14 +136,9 @@ export const extrator = {
           requestOptions
         );
         const response = await res.json();
-        console.log("123");
-        console.log(response);
         response_firt = response[0];
         response_full = response_full.concat(response[1]);
       }
-
-      console.log("122");
-      console.log(response_firt);
       ctx.commit("updateResultToCSV", [response_firt, response_full]);
     },
   },
