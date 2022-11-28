@@ -170,6 +170,7 @@ export default defineComponent({
         await store.dispatch("extrator/postExtract", {
           mes_p: mes.value,
           ano_p: ano.value,
+          valorAtual_p: valorAtual.value,
         });
 
         mostrarLoading.value = false;

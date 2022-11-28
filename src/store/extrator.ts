@@ -115,23 +115,38 @@ export const extrator = {
       const response = await res.json();
       ctx.commit("updateValorAtual", response);
     },
-    async postExtract(ctx: any, { mes_p, ano_p }) {
+    async postExtract(ctx: any, { mes_p, ano_p, valorAtual_p }) {
       const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          token: String(token_saved),
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ mes: mes_p, ano: ano_p }),
-      };
-      const res = await fetch(
-        "https://8ahe0l.deta.dev/extratorSlaMensal/",
-        //"http://127.0.0.1:8000/extratorSlaMensal/",
-        requestOptions
-      );
-      const response = await res.json();
-      ctx.commit("updateResultToCSV", response);
+      let response_full = [];
+      let offset_p = "0";
+      let response_firt;
+      console.log("123");
+      console.log(valorAtual_p);
+      for (let i = 0; i < parseInt(valorAtual_p); i++) {
+        offset_p = (50 * i).toString();
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            token: String(token_saved),
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ mes: mes_p, ano: ano_p, off_set: offset_p }),
+        };
+        const res = await fetch(
+          "https://8ahe0l.deta.dev/extratorSlaMensal/",
+          //"http://127.0.0.1:8000/extratorSlaMensal/",
+          requestOptions
+        );
+        const response = await res.json();
+        console.log("123");
+        console.log(response);
+        response_firt = response[0];
+        response_full = response_full.concat(response[1]);
+      }
+
+      console.log("122");
+      console.log(response_firt);
+      ctx.commit("updateResultToCSV", [response_firt, response_full]);
     },
   },
 };
