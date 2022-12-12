@@ -69,7 +69,7 @@ export const configUsuariosFabrica = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
@@ -85,7 +85,7 @@ export const configUsuariosFabrica = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
@@ -102,7 +102,7 @@ export const configUsuariosFabrica = {
       const requestOptions = {
         method: "POST",
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify({ id: user[0], login: user[1] }),
@@ -122,7 +122,7 @@ export const configUsuariosFabrica = {
       const requestOptions = {
         method: "DELETE",
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };

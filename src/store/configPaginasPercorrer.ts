@@ -44,7 +44,7 @@ export const configPaginasPercorrer = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
@@ -61,7 +61,7 @@ export const configPaginasPercorrer = {
       const requestOptions = {
         method: "PUT",
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify({ quantas_paginas: paginas }),

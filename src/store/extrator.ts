@@ -71,13 +71,13 @@ export const extrator = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
-        //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
+        //"https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         requestOptions
       );
       const response = await res.json();
@@ -87,13 +87,13 @@ export const extrator = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
-        //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        //"https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         requestOptions
       );
       const response = await res.json();
@@ -103,13 +103,13 @@ export const extrator = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
-        //"http://127.0.0.1:8000/configuracoes/paginasDeDados/",
+        //"https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
+        "http://127.0.0.1:8000/configuracoes/paginasDeDados/",
         requestOptions
       );
       const response = await res.json();
@@ -125,7 +125,7 @@ export const extrator = {
         const requestOptions = {
           method: "POST",
           headers: {
-            token: String(token_saved),
+            Authorization: `Bearer ${String(token_saved)}`,
             "Content-type": "application/json",
           },
           body: JSON.stringify({ mes: mes_p, ano: ano_p, off_set: offset_p }),

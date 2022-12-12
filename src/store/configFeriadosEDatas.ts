@@ -53,7 +53,7 @@ export const configFeriadosEDatas = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
@@ -70,7 +70,7 @@ export const configFeriadosEDatas = {
       const requestOptions = {
         method: "POST",
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify({ dia: dia_r, periodo: periodo_r }),
@@ -90,7 +90,7 @@ export const configFeriadosEDatas = {
       const requestOptions = {
         method: "DELETE",
         headers: {
-          token: String(token_saved),
+          Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
