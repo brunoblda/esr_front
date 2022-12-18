@@ -17,12 +17,12 @@ export const login = {
         state.logged = true;
         state.count_false_tries = 0;
 
-        sessionStorage.setItem("token", response[1]);
+        sessionStorage.setItem("Logged", "True");
       } else {
         state.logged = false;
         state.count_false_tries++;
 
-        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("Logged");
       }
     },
     logout(state: any) {
@@ -33,13 +33,14 @@ export const login = {
   },
   actions: {
     async authLogin(ctx: any, { user, password }) {
-      const requestOptions = {
+      const res = await fetch("https://8ahe0l.deta.dev/login/", {
+        //const res = await fetch("http://127.0.0.1:8000/login/", {
         method: "POST",
+        credentials: "include",
+        mode: "cors",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ usuario: user, senha: password }),
-      };
-      const res = await fetch("https://8ahe0l.deta.dev/login/", requestOptions);
-      //const res = await fetch("http://127.0.0.1:8000/login/", requestOptions);
+      });
       const response = await res.json();
       ctx.commit("updateLogged", response);
     },

@@ -50,55 +50,45 @@ export const configFeriadosEDatas = {
   },
   actions: {
     async getAllFeriadosEDatas(ctx: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
         //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
-        requestOptions
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateAllFeriadosEDatas", response);
     },
     async addFeriadoOuData(ctx: any, [dia_r, periodo_r]) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ dia: dia_r, periodo: periodo_r }),
-      };
-
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
         //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
-        requestOptions
+        {
+          method: "POST",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ dia: dia_r, periodo: periodo_r }),
+        }
       );
       const response = await res.json();
 
       ctx.commit("responseAddFeriadoOuData", response);
     },
     async delFeriadoOuData(ctx: any, [data]) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
-
       const res = await fetch(
         `https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/${data}`,
         //`http://127.0.0.1:8000/configuracoes/feriadosEDatas/${data}`,
-        requestOptions
+        {
+          method: "DELETE",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
 

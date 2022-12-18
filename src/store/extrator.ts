@@ -68,72 +68,63 @@ export const extrator = {
   },
   actions: {
     async getAllFeriadosEDatas(ctx: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
       const res = await fetch(
-        //"https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
-        "http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
-        requestOptions
+        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateAllFeriadosEDatas", response);
     },
     async getAllUsuariosFabrica(ctx: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
       const res = await fetch(
-        //"https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
-        "http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
-        requestOptions
+        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateUsuariosFabricaAll", response);
     },
     async getPaginasAPercorrer(ctx: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
       const res = await fetch(
-        //"https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
-        "http://127.0.0.1:8000/configuracoes/paginasDeDados/",
-        requestOptions
+        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
+        //"http://127.0.0.1:8000/configuracoes/paginasDeDados/",
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateValorAtual", response);
     },
     async postExtract(ctx: any, { mes_p, ano_p, valorAtual_p }) {
-      const token_saved = sessionStorage.getItem("token");
       let response_full = [];
       let offset_p = "0";
       let response_firt;
       for (let i = 0; i < parseInt(valorAtual_p); i++) {
         offset_p = (50 * i).toString();
-        const requestOptions = {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${String(token_saved)}`,
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ mes: mes_p, ano: ano_p, off_set: offset_p }),
-        };
         const res = await fetch(
           "https://8ahe0l.deta.dev/extratorSlaMensal/",
           //"http://127.0.0.1:8000/extratorSlaMensal/",
-          requestOptions
+          {
+            method: "POST",
+            credentials: "include",
+            mode: "cors",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({ mes: mes_p, ano: ano_p, off_set: offset_p }),
+          }
         );
         const response = await res.json();
         response_firt = response[0];

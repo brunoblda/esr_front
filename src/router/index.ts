@@ -68,7 +68,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   let auth = false;
 
-  if (sessionStorage.getItem("token")) {
+  if (sessionStorage.getItem("Logged")) {
     auth = true;
   }
 

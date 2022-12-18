@@ -69,14 +69,19 @@ export const configUsuariosFabrica = {
       const token_saved = sessionStorage.getItem("token");
       const requestOptions = {
         headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
+          //Authorization: `Bearer ${String(token_saved)}`,
           "Content-type": "application/json",
         },
       };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
         //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
-        requestOptions
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateUsuariosFabricaAll", response);
@@ -92,45 +97,42 @@ export const configUsuariosFabrica = {
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/allRedmineUsers/",
         //"http://127.0.0.1:8000/configuracoes/allRedmineUsers/",
-        requestOptions
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateUsuariosAll", response);
     },
     async addUsuario(ctx: any, [user]) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ id: user[0], login: user[1] }),
-      };
-
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
         //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
-        requestOptions
+        {
+          method: "POST",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ id: user[0], login: user[1] }),
+        }
       );
       const response = await res.json();
 
       ctx.commit("responseAddUsuario", response);
     },
     async delUsuario(ctx: any, [user]) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
-
       const res = await fetch(
         `https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
         //`http://127.0.0.1:8000/configuracoes/usuariosFabrica/${user[0]}`,
-        requestOptions
+        {
+          method: "DELETE",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
 

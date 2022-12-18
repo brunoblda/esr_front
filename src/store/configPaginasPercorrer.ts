@@ -41,36 +41,30 @@ export const configPaginasPercorrer = {
   },
   actions: {
     async getPaginasAPercorrer(ctx: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-      };
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
         //"http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
-        requestOptions
+        {
+          method: "GET",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+        }
       );
       const response = await res.json();
       ctx.commit("updateValorAtual", response);
     },
     async updatePaginasAPercorrer(ctx: any, paginas: any) {
-      const token_saved = sessionStorage.getItem("token");
-      const requestOptions = {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${String(token_saved)}`,
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ quantas_paginas: paginas }),
-      };
-
       const res = await fetch(
         "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
         //"http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
-        requestOptions
+        {
+          method: "PUT",
+          credentials: "include",
+          mode: "cors",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({ quantas_paginas: paginas }),
+        }
       );
       const response = await res.json();
 
