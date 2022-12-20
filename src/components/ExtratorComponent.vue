@@ -121,7 +121,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted, ref } from "vue";
+import { defineComponent, computed, onMounted, ref, watchEffect } from "vue";
 import HeaderComponentVue from "./HeaderComponent.vue";
 import JsonCSV from "vue-json-csv";
 import { useStore } from "vuex";
@@ -159,6 +159,18 @@ export default defineComponent({
 
     const valorAtual = computed(() => {
       return store.state.configPaginasPercorrer.valorAtual;
+    });
+
+    watchEffect(() => {
+      if (
+        allUsuariosFabrica.value.length == 0 ||
+        allFeriadosEDatas.value.length == 0 ||
+        valorAtual.value == ""
+      ) {
+        isDisabled.value = true;
+      } else {
+        isDisabled.value = false;
+      }
     });
 
     const clickExtrair = async () => {

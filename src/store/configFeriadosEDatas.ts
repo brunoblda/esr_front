@@ -15,6 +15,9 @@ export const configFeriadosEDatas = {
       if (response[0]["redmine_status_response"] === 200) {
         state.allFeriadosEDatas = response[1];
       }
+      if (response[0]["redmine_status_response"] === 404) {
+        state.allFeriadosEDatas = response[1];
+      }
       if (
         response[0]["Problema de autenticação, faça o login novamente"] === 401
       ) {

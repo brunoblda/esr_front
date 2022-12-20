@@ -19,6 +19,9 @@ export const configUsuariosFabrica = {
       if (response[0]["redmine_status_response"] === 200) {
         state.allUsuariosFabrica = response[1];
       }
+      if (response[0]["redmine_status_response"] === 404) {
+        state.allUsuariosFabrica = response[1];
+      }
       if (
         response[0]["Problema de autenticação, faça o login novamente"] === 401
       ) {
