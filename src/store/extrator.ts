@@ -69,7 +69,7 @@ export const extrator = {
   actions: {
     async getAllFeriadosEDatas(ctx: any) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        "https://p4e7et.deta.dev/configuracoes/feriadosEDatas/",
         //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         {
           method: "GET",
@@ -83,7 +83,7 @@ export const extrator = {
     },
     async getAllUsuariosFabrica(ctx: any) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        "https://p4e7et.deta.dev/configuracoes/usuariosFabrica/",
         //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         {
           method: "GET",
@@ -97,7 +97,7 @@ export const extrator = {
     },
     async getPaginasAPercorrer(ctx: any) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/",
+        "https://p4e7et.deta.dev/configuracoes/paginasDeDados/",
         //"http://127.0.0.1:8000/configuracoes/paginasDeDados/",
         {
           method: "GET",
@@ -116,7 +116,7 @@ export const extrator = {
       for (let i = 0; i < parseInt(valorAtual_p); i++) {
         offset_p = (50 * i).toString();
         const res = await fetch(
-          "https://8ahe0l.deta.dev/extratorSlaMensal/",
+          "https://p4e7et.deta.dev/extratorSlaMensal/",
           //"http://127.0.0.1:8000/extratorSlaMensal/",
           {
             method: "POST",

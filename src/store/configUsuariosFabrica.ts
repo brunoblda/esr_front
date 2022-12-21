@@ -77,7 +77,7 @@ export const configUsuariosFabrica = {
         },
       };
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        "https://p4e7et.deta.dev/configuracoes/usuariosFabrica/",
         //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         {
           method: "GET",
@@ -98,7 +98,7 @@ export const configUsuariosFabrica = {
         },
       };
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/allRedmineUsers/",
+        "https://p4e7et.deta.dev/configuracoes/allRedmineUsers/",
         //"http://127.0.0.1:8000/configuracoes/allRedmineUsers/",
         {
           method: "GET",
@@ -112,7 +112,7 @@ export const configUsuariosFabrica = {
     },
     async addUsuario(ctx: any, [user]) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/",
+        "https://p4e7et.deta.dev/configuracoes/usuariosFabrica/",
         //"http://127.0.0.1:8000/configuracoes/usuariosFabrica/",
         {
           method: "POST",
@@ -128,7 +128,7 @@ export const configUsuariosFabrica = {
     },
     async delUsuario(ctx: any, [user]) {
       const res = await fetch(
-        `https://8ahe0l.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
+        `https://p4e7et.deta.dev/configuracoes/usuariosFabrica/${user[0]}`,
         //`http://127.0.0.1:8000/configuracoes/usuariosFabrica/${user[0]}`,
         {
           method: "DELETE",

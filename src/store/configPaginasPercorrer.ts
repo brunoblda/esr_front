@@ -42,7 +42,7 @@ export const configPaginasPercorrer = {
   actions: {
     async getPaginasAPercorrer(ctx: any) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
+        "https://p4e7et.deta.dev/configuracoes/paginasDeDados/perfil/",
         //"http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
         {
           method: "GET",
@@ -56,7 +56,7 @@ export const configPaginasPercorrer = {
     },
     async updatePaginasAPercorrer(ctx: any, paginas: any) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/paginasDeDados/perfil/",
+        "https://p4e7et.deta.dev/configuracoes/paginasDeDados/perfil/",
         //"http://127.0.0.1:8000/configuracoes/paginasDeDados/perfil/",
         {
           method: "PUT",

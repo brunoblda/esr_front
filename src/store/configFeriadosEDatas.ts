@@ -54,7 +54,7 @@ export const configFeriadosEDatas = {
   actions: {
     async getAllFeriadosEDatas(ctx: any) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        "https://p4e7et.deta.dev/configuracoes/feriadosEDatas/",
         //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         {
           method: "GET",
@@ -68,7 +68,7 @@ export const configFeriadosEDatas = {
     },
     async addFeriadoOuData(ctx: any, [dia_r, periodo_r]) {
       const res = await fetch(
-        "https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/",
+        "https://p4e7et.deta.dev/configuracoes/feriadosEDatas/",
         //"http://127.0.0.1:8000/configuracoes/feriadosEDatas/",
         {
           method: "POST",
@@ -84,7 +84,7 @@ export const configFeriadosEDatas = {
     },
     async delFeriadoOuData(ctx: any, [data]) {
       const res = await fetch(
-        `https://8ahe0l.deta.dev/configuracoes/feriadosEDatas/${data}`,
+        `https://p4e7et.deta.dev/configuracoes/feriadosEDatas/${data}`,
         //`http://127.0.0.1:8000/configuracoes/feriadosEDatas/${data}`,
         {
           method: "DELETE",
