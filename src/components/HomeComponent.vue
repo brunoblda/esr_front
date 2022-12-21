@@ -141,6 +141,8 @@
           Documentação do sistema se encontra na pagina Wiki do Redmine:
           <a
             href="https://redmine.iphan.gov.br/redmine/projects/divsis/wiki/Esr-web"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             https://redmine.iphan.gov.br/redmine/projects/divsis/wiki/Esr-web
           </a>
