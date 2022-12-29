@@ -31,11 +31,11 @@ export const configUsuariosFabrica = {
       }
     },
     updateUsuariosAll(state: any, response: any) {
-      if(response["detail"] === "Redmine Authentication problem"){
+      if (response["detail"] === "Redmine Authentication problem") {
         sessionStorage.clear();
         state.logged = false;
         window.location.reload();
-        return
+        return;
       }
       if (response[0]["redmine_status_response"] === 200) {
         state.allUsuarios = response[1];
