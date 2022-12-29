@@ -16,12 +16,6 @@ export const configUsuariosFabrica = {
   },
   mutations: {
     updateUsuariosFabricaAll(state: any, response: any) {
-      if(response["detail"] === "Redmine Authentication problem"){
-        sessionStorage.clear();
-        state.logged = false;
-        window.location.reload();
-        return
-      }
       if (response[0]["redmine_status_response"] === 200) {
         state.allUsuariosFabrica = response[1];
       }
@@ -37,6 +31,12 @@ export const configUsuariosFabrica = {
       }
     },
     updateUsuariosAll(state: any, response: any) {
+      if(response["detail"] === "Redmine Authentication problem"){
+        sessionStorage.clear();
+        state.logged = false;
+        window.location.reload();
+        return
+      }
       if (response[0]["redmine_status_response"] === 200) {
         state.allUsuarios = response[1];
       }
