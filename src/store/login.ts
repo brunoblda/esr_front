@@ -33,7 +33,8 @@ export const login = {
   },
   actions: {
     async authLogin(ctx: any, { user, password }) {
-      const res = await fetch("https://p4e7et.deta.dev/login/", {
+      const res = await fetch("https://esrback-1-b2887091.deta.app/login", {
+        //const res = await fetch("https://p4e7et.deta.dev/login/", {
         //const res = await fetch("http://127.0.0.1:8000/login/", {
         method: "POST",
         credentials: "include",
